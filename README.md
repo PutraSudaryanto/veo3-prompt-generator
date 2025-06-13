@@ -36,14 +36,23 @@ Aplikasi ini membantu Anda merakit sebuah perintah (prompt) yang detail dan ters
 
 * **Fungsi:** Di mana adegan ini terjadi? Kolom ini memberikan konteks lingkungan untuk subjek Anda.
 * **Cara Mengisi:** Jelaskan lokasi secara detail. **"Hutan"** bisa menjadi **"hutan ajaib yang dipenuhi jamur bercahaya di malam hari"**.
-* **Contoh:** `in a forgotten ancient temple`, `on the surface of planet Mars`, `inside a cozy coffee shop during a rainy day`
+* **Contoh:**
+  * `in a forgotten ancient temple`
+  * `on the surface of planet Mars`
+  * `inside a cozy coffee shop during a rainy day`
 
 ## 5. Detail Kamera & Gaya Visual (Art & Camera Style)
 
 * **Fungsi:** Bagian ini menentukan estetika visual dari hasil akhir. Apakah Anda ingin terlihat seperti foto, lukisan, atau film?
 * **Cara Mengisi:** Sebutkan gaya seni, nama seniman, atau jenis sinematografi yang Anda inginkan.
-* **Contoh Gaya Seni:** `photorealistic` (terlihat seperti foto asli), `anime style, Studio Ghibli` (gaya anime seperti Studio Ghibli), `watercolor painting` (lukisan cat air)
-* **Contoh Gaya Kamera:** `cinematic shot` (terlihat seperti adegan film), `wide angle shot` (pengambilan gambar sudut lebar), `close-up shot` (pengambilan gambar dari dekat)
+* **Contoh Gaya Seni:**
+  * `photorealistic` (terlihat seperti foto asli)
+  * `anime style, Studio Ghibli` (gaya anime seperti Studio Ghibli)
+  * `watercolor painting` (lukisan cat air)
+* **Contoh Gaya Kamera:**
+  * `cinematic shot` (terlihat seperti adegan film)
+  * `wide angle shot` (pengambilan gambar sudut lebar)
+  * `close-up shot` (pengambilan gambar dari dekat)
 
 ## 6. Detail Audio
 
@@ -57,7 +66,10 @@ Aplikasi ini membantu Anda merakit sebuah perintah (prompt) yang detail dan ters
 
 * **Fungsi:** Untuk menambahkan elemen atau item-item spesifik yang ingin Anda lihat di dalam video, yang tidak termasuk dalam kategori lain.
 * **Cara Mengisi:** Tuliskan objek, efek visual, atau detail kecil lainnya yang penting.
-* **Contoh:** `sparks of lightning crackle around the wizard's hands` (percikan petir berderak di sekitar tangan penyihir), `a small, curious squirrel is watching from a tree branch` (seekor tupai kecil yang penasaran sedang menonton dari dahan pohon), `lens flare effect` (efek kilau lensa)
+* **Contoh:**
+  * `sparks of lightning crackle around the wizard's hands` (percikan petir berderak di sekitar tangan penyihir)
+  * `a small, curious squirrel is watching from a tree branch` (seekor tupai kecil yang penasaran sedang menonton dari dahan pohon)
+  * `lens flare effect` (efek kilau lensa)
 
 ## 8. Detail Video
 
