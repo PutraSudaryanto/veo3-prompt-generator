@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                  <div>
                     <label class="block text-gray-700 text-sm font-semibold mb-2">Usia</label>
-                    <input type="number" class="w-full char-age px-4 py-2 border border-purple-300 rounded-lg" placeholder="Misal: 30" />
+                    <input type="text" class="w-full char-age px-4 py-2 border border-purple-300 rounded-lg" placeholder="Misal: 30-an, remaja" />
                 </div>
                 <div>
                     <label class="block text-gray-700 text-sm font-semibold mb-2">Jenis Kelamin</label>
