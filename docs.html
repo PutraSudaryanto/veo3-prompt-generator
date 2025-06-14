@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan VEO3 Prompt Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s, color 0.2s;
+            color: #94a3b8; /* slate-400 */
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            background-color: #334155; /* slate-700 */
+            color: #f1f5f9; /* slate-100 */
+        }
+        .nav-link.active {
+            background-color: #0ea5e9; /* sky-500 */
+            color: white;
+            font-weight: 600;
+        }
+        .nav-link .icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.75rem;
+            transition: color 0.2s;
+        }
+        .content-section {
+            background-color: white;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0; /* slate-200 */
+            scroll-margin-top: 4rem;
+        }
+        .content-section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1e293b; /* slate-800 */
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .content-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #334155;
+        }
+        .content-section code {
+            background-color: #f1f5f9;
+            color: #ef4444;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .example-box {
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-top: 0.75rem;
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <div class="relative min-h-screen lg:grid lg:grid-cols-[280px_1fr]">
+        <!-- Sidebar Navigation -->
+        <aside class="hidden lg:block fixed top-0 left-0 h-full w-[280px] bg-slate-800 text-white p-6">
+            <a href="https://putra.ommu.id/veo3-prompt-generator/" target="_blank" class="flex items-center justify-center text-center w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-4 px-4 rounded-lg mb-8 hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-pink-500/50 text-lg">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l4.5-4.5m0 0l4.5 4.5m-4.5-4.5v12m4.5-16.5l4.5 4.5m-4.5-4.5v12" /></svg>
+                Mulai Generate
+            </a>
+            <nav>
+                <ul id="desktop-nav" class="space-y-2">
+                    <!-- Nav links will be injected by JS -->
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="lg:col-start-2 w-full">
+            <div class="p-4 sm:p-8 md:p-12">
+                <header class="mb-12">
+                    <h1 class="text-4xl font-extrabold text-slate-900">Panduan Lengkap VEO3 Prompt Generator</h1>
+                    <p class="mt-2 text-lg text-slate-600">Pelajari cara merakit prompt yang detail untuk hasil AI yang luar biasa.</p>
+                </header>
+
+                <div class="space-y-10">
+                    <section id="api-key" class="content-section p-6 fade-in-up">
+                        <h2>Kunci API Gemini (Opsional)</h2>
+                        <h3 class="font-semibold mt-4 mb-2">Fungsi</h3>
+                        <p>Untuk menggunakan fitur "Optimasi Prompt" yang didukung oleh model AI Gemini, Anda memerlukan Kunci API (API Key) dari Google.</p>
+                        <h3 class="font-semibold mt-4 mb-2">Cara Mendapatkan</h3>
+                        <ol class="list-decimal list-inside space-y-1">
+                            <li>Kunjungi halaman Google AI Studio untuk membuat kunci API Anda.</li>
+                            <li>Klik tautan berikut: <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-sky-600 font-medium hover:underline">Buat Kunci API di Google AI Studio</a>.</li>
+                            <li>Salin kunci yang telah Anda buat dan tempel ke dalam kolom yang tersedia di aplikasi.</li>
+                        </ol>
+                        <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-md">
+                            <h3 class="!mt-0 font-bold text-yellow-800">Penting</h3>
+                            <p class="text-yellow-700">Kunci API Anda bersifat rahasia. Jangan bagikan kepada siapa pun.</p>
+                        </div>
+                    </section>
+                    
+                    <section id="description" class="content-section p-6 fade-in-up">
+                        <h2>Deskripsi Video Keseluruhan</h2>
+                        <h3 class="font-semibold mt-4 mb-2">Fungsi</h3>
+                        <p>Tuliskan secara singkat apa yang ingin Anda capai. Ini adalah ide dasar Anda.</p>
+                         <h3 class="font-semibold mt-4 mb-2">Cara Mengisi</h3>
+                        <p>Gunakan satu atau dua kalimat untuk merangkum adegan atau cerita.</p>
+                        <div class="example-box">
+                            <ul class="list-none space-y-1">
+                                <li><code>Video sinematik seekor naga terbang di atas pegunungan.</code></li>
+                                <li><code>Klip pendek seorang astronot menjelajahi planet asing.</code></li>
+                                <li><code>Animasi stop-motion dari secangkir kopi yang mengepul di atas meja kayu.</code></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="subject" class="content-section p-6 fade-in-up">
+                        <h2>Detail Subjek & Aksi (Karakter)</h2>
+                        <h3 class="font-semibold mt-4 mb-2">Fungsi</h3>
+                         <p>Ini adalah bagian terpenting untuk mendeskripsikan siapa fokus utama Anda, apa yang mereka lakukan, dan bagaimana perasaan mereka.</p>
+                         <h3 class="font-semibold mt-4 mb-2">Cara Mengisi</h3>
+                        <p>Jadilah spesifik untuk mendeskripsikan karakter dan aksinya.<br/>
+                        Untuk menambahkan lebih dari satu karakter, klik tombol "Tambah Karakter".<br/>
+                        Pertimbangkan untuk menyertakan detail berikut:</p>
+                        <div class="example-box">
+                            <ul class="list-none space-y-2">
+                                <li><strong>Nama Karakter:</strong> <code>Arion</code>, <code>Luna</code>, <code>Kael</code></li>
+                                <li><strong>Usia:</strong> <code>25 tahun</code>, <code>remaja</code>, <code>anak-anak berusia 7 tahun</code></li>
+                                <li><strong>Jenis Kelamin:</strong> <code>pria</code>, <code>wanita</code></li>
+                                <li><strong>Ciri Fisik Utama:</strong> <code>rambut panjang berwarna coklat</code>, <code>mata biru bersinar</code>, <code>memiliki bekas luka di pipi</code></li>
+                                <li><strong>Pakaian & Aksesori:</strong> <code>mengenakan jubah penyihir hitam</code>, <code>memakai baju zirah perak</code>, <code>gaun musim panas yang ringan</code></li>
+                                <li><strong>Aksi Utama:</strong> <code>mengeluarkan mantra kuat</code>, <code>berjalan di jalanan kota yang ramai</code>, <code>menatap cakrawala dengan sedih</code></li>
+                                <li><strong>Emosi:</strong> <code>terlihat gembira</code>, <code>dengan ekspresi marah</code>, <code>menunjukkan rasa ingin tahu yang besar</code></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="setting" class="content-section p-6 fade-in-up">
+                        <h2>Latar / Tempat</h2>
+                        <h3 class="font-semibold mt-4 mb-2">Fungsi</h3>
+                        <p>Di mana adegan ini terjadi? Kolom ini memberikan konteks lingkungan dan suasana untuk subjek dalam video Anda.</p>
+                        <h3 class="font-semibold mt-4 mb-2">Cara Mengisi</h3>
+                        <p>Jelaskan lokasi secara detail.<br/>
+                        Pertimbangkan untuk merinci kategori berikut:</p>
+                         <div class="example-box">
+                            <ul class="list-none space-y-2">
+                                <li><strong>Lokasi:</strong> <code>di dalam kuil kuno yang terlupakan</code>, <code>di permukaan planet Mars</code>, <code>di dalam kedai kopi yang nyaman</code></li>
+                                <li><strong>Suasana atau Nuansa:</strong> <code>mencekam dan misterius</code>, <code>cerah dan penuh harapan</code>, <code>sibuk dan ramai</code></li>
+                                <li><strong>Waktu:</strong> <code>saat matahari terbenam (golden hour)</code>, <code>tengah malam di bawah bulan purnama</code>, <code>pagi hari yang berkabut</code></li>
+                                <li><strong>Cuaca:</strong> <code>hujan deras dengan petir</code>, <code>hari yang cerah tanpa awan</code>, <code>badai salju lebat</code></li>
+                                <li><strong>Musim:</strong> <code>musim gugur dengan daun-daun berwarna-warni</code>, <code>puncak musim panas yang terik</code>, <code>awal musim semi</code></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="visuals" class="content-section p-6 fade-in-up">
+                        <h2>Detail Kamera / Gaya Visual</h2>
+                        <h3 class="font-semibold mt-4 mb-2">Fungsi</h3>
+                        <p>Bagian ini menentukan estetika visual dari hasil akhir.</p>
+                        <h3 class="font-semibold mt-4 mb-2">Cara Mengisi</h3>
+                        <p>Sebutkan gaya seni dan detail kamera yang Anda inginkan untuk memandu AI.<br/>
+                        Pertimbangkan untuk merinci kategori berikut:</p>
+                         <div class="example-box">
+                            <ul class="list-none space-y-2">
+                                <li><strong>Gaya Bidikan:</strong> <code>photorealistic</code>, <code>anime style</code>, <code>lukisan cat air</code></li>
+                                <li><strong>Pergerakan Kamera:</strong> <code>tracking shot</code>, <code>panning shot</code>, <code>dolly zoom</code></li>
+                                <li><strong>Sudut Kamera:</strong> <code>low-angle shot</code>, <code>high-angle shot</code>, <code>eye-level shot</code></li>
+                                <li><strong>Fokus:</strong> <code>deep focus</code>, <code>shallow focus (bokeh)</code>, <code>rack focus</code></li>
+                                <li><strong>Pencahayaan:</strong> <code>pencahayaan dramatis</code>, <code>golden hour</code>, <code>cahaya remang-remang</code></li>
+                                <li><strong>Gradasi Warna:</strong> <code>nada hangat (warm tones)</code>, <code>nada dingin (cool tones)</code>, <code>monokromatik</code></li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <section id="audio" class="content-section p-6 fade-in-up">
+                        <h2>Detail Audio</h2>
+                        <h3 class="font-semibold mt-4 mb-2">Fungsi</h3>
+                        <p>Jelaskan semua elemen suara yang ingin Anda dengar untuk membangun suasana.</p>
+                        <h3 class="font-semibold mt-4 mb-2">Cara Mengisi</h3>
+                        <p>Rincikan suara lingkungan, jenis musik, dan dialog yang diucapkan oleh karakter.</p>
+                        <div class="example-box">
+                            <ul class="list-none space-y-2">
+                                <li><strong>Suara Lingkungan:</strong> <code>suara angin bertiup kencang</code>, <code>gemuruh ombak di pantai</code>, <code>hiruk pikuk lalu lintas kota</code></li>
+                                <li><strong>Musik Latar:</strong> <code>musik orkestra yang epik</code>, <code>melodi piano yang lembut dan sedih</code>, <code>irama synthwave yang energik</code></li>
+                                <li><strong>Dialog:</strong> <code>Arion: "Kita harus pergi!"</code>, <code>Narator: "Di sebuah negeri yang terlupakan..."</code>, <code>Luna (berbisik): "Lihat!"</code></li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <section id="extras" class="content-section p-6 fade-in-up">
+                        <h2>Detail Tambahan</h2>
+                        <h3 class="font-semibold mt-4 mb-2">Fungsi</h3>
+                        <p>Untuk menambahkan elemen atau item-item spesifik yang ingin Anda lihat di dalam video, yang tidak termasuk dalam kategori lain.</p>
+                        <h3 class="font-semibold mt-4 mb-2">Cara Mengisi</h3>
+                        <p>Tuliskan objek, efek visual, atau detail kecil lainnya yang penting.</p>
+                        <div class="example-box">
+                            <ul class="list-none space-y-1">
+                                <li><code>percikan petir berderak di sekitar tangan penyihir</code></li>
+                                <li><code>seekor tupai kecil yang penasaran sedang menonton dari dahan pohon</code></li>
+                                <li><code>efek kilau lensa (lens flare) saat matahari terbenam</code></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="video-details" class="content-section p-6 fade-in-up">
+                        <h2>Detail Video</h2>
+                        <h3 class="font-semibold mt-4 mb-2">Fungsi</h3>
+                        <p>Menentukan properti teknis dari video Anda.</p>
+                        <h3 class="font-semibold mt-4 mb-2">Cara Mengisi</h3>
+                        <p>Tentukan gaya, kualitas resolusi, dan panjang durasi video.</p>
+                        <div class="example-box">
+                           <ul class="list-none space-y-1">
+                                <li><strong>Gaya Video:</strong> <code>video sinematik</code>, <code>klip dokumenter</code>, <code>animasi stop-motion</code> <small>atau sesuai opsi pilihan yang ada.</small></li>
+                                <li><strong>Kualitas Video:</strong> <code>Full HD</code>, <code>4K</code>, <code>8K</code></li>
+                                <li><strong>Durasi:</strong> <code>klip 15 detik</code>, <code>trailer 1 menit</code>, <code>video 5 menit</code></li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                     <section id="generate" class="content-section p-0 overflow-hidden fade-in-up">
+                        <h2 class="!text-white bg-blue-600 hover:bg-blue-700 transition p-4 justify-left">Buat Prompt</h2>
+                        <div class="p-6">
+                            <h3 class="font-semibold mb-2">Fungsi</h3>
+                            <p>Tombol ini akan menggabungkan semua informasi yang telah Anda masukkan untuk menghasilkan sebuah <strong>Prompt Asli</strong> yang lengkap dan siap digunakan.</p>
+                            <h3 class="font-semibold mt-6 mb-2">Contoh Hasil</h3>
+                            <p class="mb-4 text-sm">Berikut adalah contoh bagaimana semua detail yang Anda masukkan digabungkan menjadi satu prompt:</p>
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 class="font-semibold text-slate-600">1. Prompt Asli</h4>
+                                    <blockquote class="mt-1 border-l-4 border-slate-300 pl-4 italic text-slate-500">
+                                        Buat video dengan spesifikasi berikut:<br/>
+                                        - **Deskripsi Keseluruhan:** Seorang astronot di Mars<br/>
+                                        - **Karakter 1:** astronot  (Kewarganegaraan: , Usia: 40, Jenis Kelamin: Laki-laki). Fisik: . Pakaian: menggunakan pakaian astronot lengkap. Aksi: berjalan pelan dimars. Emosi: .<br/>
+                                        - **Latar:** Lokasi di mars. Suasana mencekam. Waktu: . Cuaca: . Musim: .<br/>
+                                        - **Kamera:** Gaya: Wide Shot (Bidikan Lebar). Gerakan: Tracking. Sudut: Setinggi Mata. Fokus: Fokus Lembut. Cahaya: Cahaya Alami. Warna: Nada Hangat.<br/>
+                                        - **Audio:** Jenis dialog: Tanpa dialog. Suara: suara angin. Musik: orkestra mencekam.<br/>
+                                        - **Catatan Tambahan:** perlihatkan bumi sebagai bintang berwarna biru yang kecil<br/>
+                                        - **Detail Video:** Gaya: Dokumenter. Kualitas: 4K. Durasi: 8 detik.
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="optimize" class="content-section p-0 overflow-hidden fade-in-up">
+                        <h2 class="!text-white bg-green-500 hover:bg-green-600 transition p-4 justify-left">Optimalkan dengan Gemini</h2>
+                         <div class="p-6">
+                            <h3 class="font-semibold mb-2">Fungsi</h3>
+                            <p>Jika Anda telah memasukkan Kunci API, tombol ini akan menggunakan AI untuk menyempurnakan prompt Anda, memberikan saran, dan menghasilkan versi final yang lebih sinematik.</p>
+                             <h3 class="font-semibold mt-6 mb-2">Contoh Hasil</h3>
+                             <p class="mb-4 text-sm">Anggaplah <strong>Prompt Asli</strong> Anda adalah: <code>Seorang astronot di Mars.</code> Berikut adalah contoh hasil yang akan Anda dapatkan:</p>
+                             <div class="space-y-4">
+                                <div>
+                                    <h4 class="font-semibold text-slate-600">1. Prompt Versi Optimasi</h4>
+                                    <p class="mb-4 text-sm">Ini adalah versi yang lebih kaya dan deskriptif dari ide awal Anda, yang dibuat oleh Gemini.</p>
+                                    <blockquote class="mt-1 border-l-4 border-slate-300 pl-4 italic text-slate-500">
+                                        <code>Video seorang astronot tunggal dengan pakaian luar angkasa putih modern, perlahan-lahan berjalan melintasi lanskap Mars yang sunyi dan berwarna merah karat. Debu halus tertiup angin, dan di kejauhan terlihat kawah-kawah besar serta pegunungan beku.</code>
+                                    </blockquote>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-600">2. Saran Kreatif dari Gemini</h4>
+                                    <p class="mb-4 text-sm">Gemini akan memberikan beberapa ide tambahan untuk membuat adegan Anda lebih unik dan menarik.</p>
+                                    <blockquote class="mt-1 border-l-4 border-slate-300 pl-4 italic text-slate-500">
+                                        <ul class="list-disc list-inside">
+                                            <li><strong>Tambahkan Dinamika:</strong> Pertimbangkan untuk menambahkan fenomena 'setan debu' (dust devil) Mars yang bergerak perlahan di latar belakang.</li>
+                                            <li><strong>Elemen Penemuan:</strong> Bagaimana jika astronot tersebut menemukan artefak aneh yang sebagian terkubur di dalam pasir, berkilauan di bawah cahaya matahari yang redup?</li>
+                                            <li><strong>Sentuhan Emosional:</strong> Perlihatkan momen saat astronot berhenti untuk menatap Bumi yang terlihat sebagai bintang biru kecil.</li>
+                                        </ul>
+                                    </blockquote>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-600">3. Prompt Sinematik Final</h4>
+                                    <p class="mb-4 text-sm">Ini adalah gabungan dari prompt yang telah dioptimalkan dengan beberapa saran kreatif, ditulis dalam bahasa yang lebih sinematik untuk hasil terbaik.</p>
+                                    <blockquote class="mt-1 border-l-4 border-slate-300 pl-4 italic text-slate-500">
+                                        <code>Sudut pandang sinematik rendah, dimulai dengan close-up pada sepatu bot astronot yang meninggalkan jejak di pasir merah Mars. Kamera perlahan naik untuk memperlihatkan sosok tunggal itu berhenti, tatapannya terpaku pada kilau aneh di dekat formasi batuan. Satu-satunya suara adalah desingan angin sunyi Mars.</code>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+                 <footer class="text-center py-10 mt-12 text-slate-500 text-sm">
+                    <div class="flex justify-center items-center space-x-6 mb-4">
+                        <a href="#" class="text-slate-400 hover:text-blue-600 transition" aria-label="Facebook">
+                           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/></svg>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-pink-600 transition" aria-label="Instagram">
+                           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2c-2.717 0-3.056.01-4.122.06-1.065.05-1.79.217-2.428.465a4.902 4.902 0 00-1.772 1.153 4.902 4.902 0 00-1.153 1.772c-.247.637-.415 1.363-.465 2.428C2.01 8.944 2 9.284 2 12s.01 3.056.06 4.122c.05 1.065.218 1.79.465 2.428a4.902 4.902 0 001.153 1.772 4.902 4.902 0 001.772 1.153c.637.247 1.363.415 2.428.465C8.944 21.99 9.284 22 12 22s3.056-.01 4.122-.06c1.065-.05 1.79-.218 2.428-.465a4.902 4.902 0 001.772-1.153 4.902 4.902 0 001.153-1.772c.247-.637.415-1.363.465-2.428.05-1.066.06-1.406.06-4.122s-.01-3.056-.06-4.122c-.05-1.065-.218-1.79-.465-2.428a4.902 4.902 0 00-1.153-1.772A4.902 4.902 0 0018.55.522c-.637-.247-1.363-.415-2.428-.465C15.056 2.01 14.717 2 12 2zm0 2.117c2.659 0 2.972.01 4.026.058.975.045 1.504.207 1.857.344.467.182.86.399 1.242.781.381.381.599.775.781 1.242.137.353.299.882.344 1.857.048 1.054.057 1.367.057 4.026s-.01 2.972-.057 4.026c-.045.975-.207 1.504-.344 1.857a3.097 3.097 0 01-.781 1.242 3.097 3.097 0 01-1.242.781c-.353.137-.882.299-1.857.344-1.054.048-1.367.057-4.026.057s-2.972-.01-4.026-.057c-.975-.045-1.504-.207-1.857-.344a3.097 3.097 0 01-1.242-.781 3.097 3.097 0 01-.781-1.242c-.137-.353-.299-.882-.344-1.857C4.127 15.028 4.118 14.717 4.118 12s.01-2.972.057-4.026c.045-.975.207-1.504.344-1.857.182-.467.399-.86.781-1.242.381-.381.775-.599 1.242-.781.353-.137.882-.299 1.857-.344C9.028 4.127 9.34 4.118 12 4.118zM12 8.132a3.868 3.868 0 100 7.736 3.868 3.868 0 000-7.736zm0 9.85a5.982 5.982 0 110-11.964 5.982 5.982 0 010 11.964z" clip-rule="evenodd"/></svg>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-sky-700 transition" aria-label="LinkedIn">
+                           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 110-4.125 2.062 2.062 0 010 4.125zM3.567 20.452h3.542V9H3.567v11.452z"/></svg>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-slate-900 transition" aria-label="Website">
+                           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 110-18 9 9 0 010 18z" /><path stroke-linecap="round" stroke-linejoin="round" d="M3.25 12h17.5" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 3.75c-3.866 0-7 4.363-7 9.75s3.134 9.75 7 9.75c3.866 0 7-4.363 7-9.75s-3.134-9.75-7-9.75z" /></svg>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-gray-800 transition" aria-label="GitHub">
+                           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-green-500 transition" aria-label="WhatsApp">
+                           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                        </a>
+                    </div>
+                    <p>&copy; 2025 Panduan Veo 3 Prompt Generator. by <a href="#" class="font-semibold hover:underline">Putra Sudaryanto</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.content-section');
+    const navContainer = document.getElementById('desktop-nav');
+
+    const icons = {
+        'api-key': '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />',
+        'description': '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />',
+        'subject': '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />',
+        'setting': '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" />',
+        'visuals': '<path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />',
+        'audio': '<path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />',
+        'extras': '<path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />',
+        'video-details': '<path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.375 .908l-2.036 2.036a.75.75 0 11-1.06-1.06l2.036-2.036a3 3 0 01.908-.375H9zM9 3.75v1.007a3 3 0 00.375.908l2.036 2.036a.75.75 0 001.06-1.06l-2.036-2.036a3 3 0 00-.908-.375H9z" /><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />',
+        'generate': '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l4.5-4.5m0 0l4.5 4.5m-4.5-4.5v12m4.5-16.5l4.5 4.5m-4.5-4.5v12" />',
+        'optimize': '<path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.572L16.5 21.75l-.398-1.178a3.375 3.375 0 00-2.3-2.3L12.75 18l1.178-.398a3.375 3.375 0 002.3-2.3L16.5 14.25l.398 1.178a3.375 3.375 0 002.3 2.3l1.178.398-1.178.398a3.375 3.375 0 00-2.3 2.3z" />'
+    };
+
+    const iconColors = {
+        'api-key': { text: 'text-yellow-500', bg: 'bg-yellow-100' },
+        'description': { text: 'text-blue-500', bg: 'bg-blue-100' },
+        'subject': { text: 'text-purple-500', bg: 'bg-purple-100' },
+        'setting': { text: 'text-green-500', bg: 'bg-green-100' },
+        'visuals': { text: 'text-orange-500', bg: 'bg-orange-100' },
+        'audio': { text: 'text-green-700', bg: 'bg-green-100' },
+        'extras': { text: 'text-blue-700', bg: 'bg-blue-100' },
+        'video-details': { text: 'text-red-600', bg: 'bg-red-100' },
+        'default': { text: 'text-sky-500', bg: 'bg-sky-100' }
+    };
+
+    const navTitles = {
+        'api-key': 'Kunci API',
+        'description': 'Deskripsi Video',
+        'subject': 'Subjek & Aksi',
+        'setting': 'Latar / Tempat',
+        'visuals': 'Gaya Visual',
+        'audio': 'Audio',
+        'extras': 'Detail Tambahan',
+        'video-details': 'Detail Video',
+        'generate': 'Buat Prompt',
+        'optimize': 'Optimalkan'
+    };
+
+    sections.forEach(section => {
+        const id = section.id;
+        const h2 = section.querySelector('h2');
+        const fullTitle = h2.textContent;
+        const navTitle = navTitles[id] || fullTitle;
+        const iconPath = icons[id] || icons['extras'];
+        const colors = iconColors[id] || iconColors['default'];
+
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <a href="#${id}" class="nav-link">
+                <svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    ${iconPath}
+                </svg>
+                ${navTitle}
+            </a>
+        `;
+        navContainer.appendChild(li);
+
+        const iconSpan = `<span class="${colors.text} ${colors.bg} p-2 rounded-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${iconPath}</svg>
+        </span>`;
+        if(!h2.classList.contains('!text-white')) { // Don't add icon to button-styled titles
+            h2.innerHTML = iconSpan + fullTitle;
+        }
+    });
+
+    const navLinks = navContainer.querySelectorAll('.nav-link');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { rootMargin: "-30% 0px -70% 0px" });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                animationObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+        animationObserver.observe(el);
+    });
+
+    // Manually add icons for button-styled headers
+    const generateH2 = document.querySelector('#generate h2');
+    const optimizeH2 = document.querySelector('#optimize h2');
+    
+    generateH2.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${icons['generate']}</svg>` + generateH2.textContent;
+    optimizeH2.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${icons['optimize']}</svg>` + optimizeH2.textContent;
+
+});
+</script>
+</body>
+</html>
