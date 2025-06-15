@@ -114,48 +114,50 @@
             <!-- --- BACKGROUND DETAILS --- -->
             <div class="md:col-span-2 bg-gradient-to-r from-green-50 to-teal-50 p-6 rounded-xl shadow-inner mb-6 border border-green-200">
                 <h2 class="text-xl font-bold text-green-800 mb-4">Latar / Tempat</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="sm:col-span-2">
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
                         <label for="location" class="block text-gray-700 text-sm font-semibold mb-2">Lokasi</label>
                         <input type="text" id="location" class="w-full px-4 py-2 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white bg-opacity-90 shadow-sm" placeholder="Hutan pinus, kota futuristik...">
                     </div>
-                    <div class="sm:col-span-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label for="timeOfDay" class="block text-gray-700 text-sm font-semibold mb-2">Waktu</label>
+                            <select id="timeOfDay" class="w-full px-4 py-2 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white bg-opacity-90 shadow-sm">
+                                <option value="">Pilih Waktu</option>
+                                <option value="Morning">Pagi</option>
+                                <option value="Day">Siang</option>
+                                <option value="Afternoon">Sore</option>
+                                <option value="Night">Malam</option>
+                                <option value="Dawn">Dini Hari</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="weather" class="block text-gray-700 text-sm font-semibold mb-2">Cuaca</label>
+                            <select id="weather" class="w-full px-4 py-2 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white bg-opacity-90 shadow-sm">
+                                <option value="">Pilih Cuaca</option>
+                                <option value="Clear">Cerah</option>
+                                <option value="Cloudy">Berawan</option>
+                                <option value="Rainy">Hujan</option>
+                                <option value="Stormy">Badai</option>
+                                <option value="Snowy">Salju</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="season" class="block text-gray-700 text-sm font-semibold mb-2">Musim</label>
+                            <select id="season" class="w-full px-4 py-2 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white bg-opacity-90 shadow-sm">
+                               <option value="">Pilih Musim</option>
+                                <option value="Spring">Semi</option>
+                                <option value="Summer">Panas</option>
+                                <option value="Autumn">Gugur</option>
+                                <option value="Winter">Dingin</option>
+                                <option value="Rainy Season">Musim Hujan</option>
+                                <option value="Dry Season">Musim Kemarau</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
                         <label for="audioAtmosphereMood" class="block text-gray-700 text-sm font-semibold mb-2">Suasana atau Nuansa</label>
                         <textarea id="audioAtmosphereMood" rows="2" class="w-full px-4 py-2 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white bg-opacity-90 shadow-sm" placeholder="Tenang, intens, misterius..."></textarea>
-                    </div>
-                    <div>
-                        <label for="timeOfDay" class="block text-gray-700 text-sm font-semibold mb-2">Waktu</label>
-                        <select id="timeOfDay" class="w-full px-4 py-2 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white bg-opacity-90 shadow-sm">
-                            <option value="">Pilih Waktu</option>
-                            <option value="Morning">Pagi</option>
-                            <option value="Day">Siang</option>
-                            <option value="Afternoon">Sore</option>
-                            <option value="Night">Malam</option>
-                            <option value="Dawn">Dini Hari</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="weather" class="block text-gray-700 text-sm font-semibold mb-2">Cuaca</label>
-                        <select id="weather" class="w-full px-4 py-2 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white bg-opacity-90 shadow-sm">
-                            <option value="">Pilih Cuaca</option>
-                            <option value="Clear">Cerah</option>
-                            <option value="Cloudy">Berawan</option>
-                            <option value="Rainy">Hujan</option>
-                            <option value="Stormy">Badai</option>
-                            <option value="Snowy">Salju</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="season" class="block text-gray-700 text-sm font-semibold mb-2">Musim</label>
-                        <select id="season" class="w-full px-4 py-2 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white bg-opacity-90 shadow-sm">
-                           <option value="">Pilih Musim</option>
-                            <option value="Spring">Semi</option>
-                            <option value="Summer">Panas</option>
-                            <option value="Autumn">Gugur</option>
-                            <option value="Winter">Dingin</option>
-                            <option value="Rainy Season">Musim Hujan</option>
-                            <option value="Dry Season">Musim Kemarau</option>
-                        </select>
                     </div>
                 </div>
             </div>
@@ -168,77 +170,83 @@
                         <label for="cameraStyle" class="block text-gray-700 text-sm font-semibold mb-2">Gaya Bidikan</label>
                         <select id="cameraStyle" class="w-full px-4 py-2 border border-red-300 rounded-lg focus:ring-red-500 focus:border-red-500 bg-white shadow-sm">
                             <option value="">Pilih Gaya</option>
-                            <option value="Wide Shot">Wide Shot</option>
-                            <option value="Medium Shot">Medium Shot</option>
-                            <option value="Close-up">Close-up</option>
-                            <option value="POV (Point of View)">POV</option>
-                            <option value="Establishing Shot">Establishing Shot</option>
-                            <option value="Over-the-Shoulder">Over-the-Shoulder</option>
+                            <option value="Extreme Long Shot">Extreme Long Shot (Bidikan Sangat Jauh)</option>
+                            <option value="Long Shot">Long Shot (Bidikan Jauh)</option>
+                            <option value="Full Shot">Full Shot (Bidikan Penuh)</option>
+                            <option value="Medium Long Shot">Medium Long Shot (Bidikan Menengah Jauh)</option>
+                            <option value="Medium Shot">Medium Shot (Bidikan Menengah)</option>
+                            <option value="Medium Close-Up">Medium Close-Up (Bidikan Dekat Menengah)</option>
+                            <option value="Close-Up">Close-Up (Bidikan Dekat)</option>
+                            <option value="Extreme Close-Up">Extreme Close-Up (Bidikan Sangat Dekat)</option>
                         </select>
                     </div>
                     <div>
                         <label for="cameraMovement" class="block text-gray-700 text-sm font-semibold mb-2">Pergerakan Kamera</label>
                         <select id="cameraMovement" class="w-full px-4 py-2 border border-red-300 rounded-lg focus:ring-red-500 focus:border-red-500 bg-white shadow-sm">
                            <option value="">Pilih Pergerakan</option>
-                            <option value="Pan">Pan</option>
-                            <option value="Tilt">Tilt</option>
-                            <option value="Dolly">Dolly</option>
-                            <option value="Tracking">Tracking</option>
-                            <option value="Zoom In">Perbesar</option>
-                            <option value="Zoom Out">Perkecil</option>
-                            <option value="Crane Shot">Bidikan Derek</option>
-                            <option value="Handheld">Genggam</option>
+                            <option value="Pan">Pan (Geser Horizontal)</option>
+                            <option value="Tilt">Tilt (Geser Vertikal)</option>
+                            <option value="Dolly">Dolly (Maju/Mundur)</option>
+                            <option value="Dolly Zoom">Dolly Zoom</option>
+                            <option value="Tracking">Tracking (Mengikuti Objek)</option>
+                            <option value="Arc Shot">Arc Shot (Gerakan Melingkar)</option>
+                            <option value="Drone Shot">Drone Shot (Bidikan Drone)</option>
+                            <option value="Zoom In">Zoom In (Perbesar)</option>
+                            <option value="Zoom Out">Zoom Out (Perkecil)</option>
+                            <option value="Crane Shot">Crane Shot (Bidikan Derek)</option>
+                            <option value="Handheld">Handheld (Genggam)</option>
                             <option value="Steadicam">Steadicam</option>
-                            <option value="Fixed">Diam</option>
+                            <option value="Fixed">Fixed (Diam)</option>
                         </select>
                     </div>
                     <div>
                         <label for="cameraAngle" class="block text-gray-700 text-sm font-semibold mb-2">Sudut Kamera</label>
                         <select id="cameraAngle" class="w-full px-4 py-2 border border-red-300 rounded-lg focus:ring-red-500 focus:border-red-500 bg-white shadow-sm">
                              <option value="">Pilih Sudut</option>
-                            <option value="Low Angle">Low Angle</option>
-                            <option value="High Angle">High Angle</option>
-                            <option value="Eye Level">Eye Level</option>
-                            <option value="Dutch Angle">Dutch Angle</option>
-                            <option value="Bird's Eye View">Bird's Eye View</option>
-                            <option value="Worm's Eye View">Worm's Eye View</option>
+                            <option value="Low Angle">Low Angle (Sudut Rendah)</option>
+                            <option value="High Angle">High Angle (Sudut Tinggi)</option>
+                            <option value="Eye Level">Eye Level (Setinggi Mata)</option>
+                            <option value="Dutch Angle">Dutch Angle (Sudut Belanda)</option>
+                            <option value="Bird's Eye View">Bird's Eye View (Pandangan Mata Burung)</option>
+                            <option value="Worm's Eye View">Worm's Eye View (Pandangan Mata Cacing)</option>
+                            <option value="Point of View">Point of View (Sudut Pandang)</option>
                         </select>
                     </div>
                     <div>
                         <label for="cameraFocus" class="block text-gray-700 text-sm font-semibold mb-2">Fokus</label>
                         <select id="cameraFocus" class="w-full px-4 py-2 border border-red-300 rounded-lg focus:ring-red-500 focus:border-red-500 bg-white shadow-sm">
                            <option value="">Pilih Fokus</option>
-                            <option value="Sharp Focus">Fokus Tajam</option>
-                            <option value="Soft Focus">Fokus Lembut</option>
-                            <option value="Shallow Depth of Field">DOF Dangkal</option>
-                            <option value="Deep Depth of Field">DOF Dalam</option>
-                            <option value="Rack Focus">Rack Focus</option>
+                            <option value="Shallow Focus">Shallow Focus (Fokus Dangkal)</option>
+                            <option value="Deep Focus">Deep Focus (Fokus Dalam)</option>
+                            <option value="Soft Focus">Soft Focus (Fokus Lembut)</option>
+                            <option value="Rack Focus">Rack Focus (Pergeseran Fokus)</option>
+                            <option value="Follow Focus">Follow Focus (Mengikuti Fokus)</option>
                         </select>
                     </div>
                     <div>
                         <label for="lighting" class="block text-gray-700 text-sm font-semibold mb-2">Pencahayaan</label>
                         <select id="lighting" class="w-full px-4 py-2 border border-red-300 rounded-lg focus:ring-red-500 focus:border-red-500 bg-white shadow-sm">
                             <option value="">Pilih Pencahayaan</option>
-                            <option value="Natural Light">Cahaya Alami</option>
-                            <option value="Studio Lighting">Pencahayaan Studio</option>
-                            <option value="Dramatic">Dramatis</option>
-                            <option value="Soft">Lembut</option>
-                            <option value="High-Key">High-Key</option>
-                            <option value="Low-Key">Low-Key</option>
-                            <option value="Backlight">Backlight</option>
+                            <option value="Key Light">Key Light (Cahaya Utama)</option>
+                            <option value="Fill Light">Fill Light (Cahaya Pengisi)</option>
+                            <option value="Backlight">Backlight (Cahaya Latar)</option>
+                            <option value="Hard Light">Hard Light (Cahaya Keras)</option>
+                            <option value="Soft Light">Soft Light (Cahaya Lembut)</option>
+                            <option value="Side Light">Side Light (Cahaya Samping)</option>
+                            <option value="Under Light">Under Light (Cahaya Bawah)</option>
+                            <option value="Motivated Light">Motivated Light (Cahaya Termotivasi)</option>
                         </select>
                     </div>
                     <div>
                         <label for="colorGrading" class="block text-gray-700 text-sm font-semibold mb-2">Gradasi Warna</label>
                         <select id="colorGrading" class="w-full px-4 py-2 border border-red-300 rounded-lg focus:ring-red-500 focus:border-red-500 bg-white shadow-sm">
-                           <option value="">Pilih Gradasi Warna</option>
-                            <option value="Warm Tones">Nada Hangat</option>
-                            <option value="Cool Tones">Nada Dingin</option>
-                            <option value="Monochromatic">Monokromatik</option>
-                            <option value="Vibrant">Bersemangat</option>
-                            <option value="Muted">Diredam</option>
-                            <option value="Desaturated">Didesaturasi</option>
-                            <option value="High Contrast">Kontras Tinggi</option>
+                            <option value="">Pilih Gradasi Warna</option>
+                            <option value="Teal & Orange">Teal & Orange (Oranye & Biru Kehijauan)</option>
+                            <option value="Bleach Bypass">Bleach Bypass (Pucat & Kontras Tinggi)</option>
+                            <option value="High Saturation">High Saturation (Saturasi Tinggi)</option>
+                            <option value="Desaturated">Desaturated (Desaturasi / Pudar)</option>
+                            <option value="Monochromatic / Sepia">Monochromatic / Sepia</option>
+                            <option value="Low Contrast">Low Contrast (Kontras Rendah)</option>
                         </select>
                     </div>
                 </div>
